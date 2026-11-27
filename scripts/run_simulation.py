@@ -5,7 +5,7 @@ from typing import List, Optional
 
 from algorithms.registry import AlgorithmRegistry, resolve_algorithm_key
 from cases.scenario_loader import ScenarioLoader
-from config.settings import DEFAULT_ALGORITHM
+from config.settings import DEFAULT_ALGORITHM, OUTPUT_DIR
 from core.simulation_observers import (
     ConsoleReportObserver,
     TraceExportObserver,
@@ -34,12 +34,27 @@ def build_parser() -> argparse.ArgumentParser:
         "-a",
         "--algorithm",
         default=None,
-        help="Registry key/alias algoritma (mis. pathfinding, spanning_tree).",
+        help="Registry key/alias algoritma (mis. pathfinding, ford_fulkerson, dinic, maxflow).",
+    )
+    parser.add_argument(
+        "--save-plots",
+        action="store_true",
+        help="Simpan snapshot visualisasi graf sebagai PNG ke folder output/.",
+    )
+    parser.add_argument(
+        "--no-show",
+        action="store_true",
+        help="Jalankan tanpa membuka jendela popup Matplotlib (cocok dengan --save-plots).",
     )
     return parser
 
 
-def run_single(yaml_path: Path, algorithm_override: Optional[str] = None) -> SimulationResult:
+def run_single(
+    yaml_path: Path,
+    algorithm_override: Optional[str] = None,
+    save_plots: bool = False,
+    no_show: bool = False,
+) -> SimulationResult:
     loader = ScenarioLoader(yaml_path)
     metadata = loader.get_metadata()
     plan = loader.get_execution_plan()
@@ -52,7 +67,13 @@ def run_single(yaml_path: Path, algorithm_override: Optional[str] = None) -> Sim
 
     runner = SimulationRunner(solver=solver, plan=plan, metadata=metadata)
     runner.attach(ConsoleReportObserver())
-    runner.attach(VisualizerSnapshotObserver(graph_model.nx_graph))
+    runner.attach(
+        VisualizerSnapshotObserver(
+            graph_model.nx_graph,
+            save_dir=OUTPUT_DIR if save_plots else None,
+            show=not no_show,
+        )
+    )
     runner.attach(TraceExportObserver(solver))
     return runner.execute()
 
@@ -62,7 +83,12 @@ def main(argv: Optional[List[str]] = None) -> None:
     scenario_paths = collect_scenario_paths(args.scenarios, include_all=args.all)
 
     for yaml_path in scenario_paths:
-        run_single(yaml_path, algorithm_override=args.algorithm)
+        run_single(
+            yaml_path,
+            algorithm_override=args.algorithm,
+            save_plots=args.save_plots,
+            no_show=args.no_show,
+        )
 
 
 if __name__ == "__main__":

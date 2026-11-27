@@ -31,7 +31,10 @@ class ScenarioLoader:
 
         for edge in topology.get("edges", []):
             model.add_weighted_edge(
-                u=edge["from"], v=edge["to"], weight=edge["weight"]
+                u=edge["from"],
+                v=edge["to"],
+                weight=edge["weight"],
+                capacity=edge.get("capacity"),
             )
 
         return model
