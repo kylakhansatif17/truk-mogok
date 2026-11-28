@@ -562,7 +562,7 @@ def print_report(result: BuildResult) -> None:
 
 
 def build_parser() -> argparse.ArgumentParser:
-    p = argparse.ArgumentParser(prog="scripts.build_radar_auri", description=__doc__.split("\n")[0])
+    p = argparse.ArgumentParser(prog="scripts.build_radar_auri", description=(__doc__ or "Generator skenario YAML Radar Auri").split("\n")[0])
     p.add_argument("--simpul", type=Path, default=DEFAULT_SIMPUL_CSV, help="CSV tabel simpul")
     p.add_argument("--ruas", type=Path, default=DEFAULT_RUAS_CSV, help="CSV tabel ruas")
     p.add_argument("--output", type=Path, default=DEFAULT_OUTPUT_YAML, help="path YAML keluaran")
