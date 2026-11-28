@@ -1,0 +1,691 @@
+{
+  "metadata": {
+    "case_id": "case_07_truk_mogok_radar_auri",
+    "title": "Analisis Maximum Flow Kemacetan Truk Kontainer Mogok Jl. Radar Auri Depok",
+    "description": "Pemodelan jaringan jalan nyata (V=23, E=41) koridor Jl. Radar Auri - Jl. Putri Tunggal - Taman Wiladatika. Kapasitas ruas dihitung dengan PKJI 2014 (C = C0 x FCLJ x FCPA x FCHS x FCUK, satuan skr/jam).",
+    "algorithm": "FordFulkerson"
+  },
+  "total_steps": 17,
+  "initial_topology": {
+    "nodes": [
+      {
+        "id": 0,
+        "label": "S - Super Source (gabungan semua titik masuk)",
+        "pos": [
+          -0.298,
+          0.591
+        ]
+      },
+      {
+        "id": 1,
+        "label": "N01 - Persimpangan Jl. Radar Auri – Jl. Komp. Sendang Agung",
+        "pos": [
+          0.0,
+          0.591
+        ]
+      },
+      {
+        "id": 2,
+        "label": "N02 - Persimpangan Jl. Radar Auri – Jl. Bakti",
+        "pos": [
+          0.351,
+          0.472
+        ]
+      },
+      {
+        "id": 3,
+        "label": "N03 - Persimpangan Jl.Radar Auri - Jl. Swadaya",
+        "pos": [
+          0.392,
+          0.455
+        ]
+      },
+      {
+        "id": 4,
+        "label": "N04 - Persimpangan Jl.Radar Auri - Jl.H.Sofyan",
+        "pos": [
+          0.541,
+          0.41
+        ]
+      },
+      {
+        "id": 5,
+        "label": "N05 - Persimpangan Jl Radar Auri - Jl. Makam",
+        "pos": [
+          0.549,
+          0.412
+        ]
+      },
+      {
+        "id": 6,
+        "label": "N06 - Persimpangan Jl Radar Auri - Jl. H. Anang",
+        "pos": [
+          0.688,
+          0.479
+        ]
+      },
+      {
+        "id": 7,
+        "label": "N07 - Persimpangan Jl. Radar Auri - Jl. Swadaya3",
+        "pos": [
+          0.857,
+          0.557
+        ]
+      },
+      {
+        "id": 8,
+        "label": "N08 - Jl. Radar Auri - Jl. Mualim Aminudin",
+        "pos": [
+          1.006,
+          0.71
+        ]
+      },
+      {
+        "id": 9,
+        "label": "N09 - Persimpangan Jl. Radar Auri x Jl. Ramitor",
+        "pos": [
+          1.241,
+          0.718
+        ]
+      },
+      {
+        "id": 10,
+        "label": "N10 - Pertigaan Jl. Radar Auri x Jl. Putri Tunggal",
+        "pos": [
+          1.467,
+          0.722
+        ]
+      },
+      {
+        "id": 11,
+        "label": "N11 - Jl. Putri Tunggal",
+        "pos": [
+          1.469,
+          0.699
+        ]
+      },
+      {
+        "id": 12,
+        "label": "N12 - Pertigaan Jl Putri Tunggal x Jl. Telkom x Jl. Pratidina",
+        "pos": [
+          1.379,
+          0.401
+        ]
+      },
+      {
+        "id": 13,
+        "label": "N13 - Persimpangan Jl. Putri Tunggal x Jl. Gatot Kaca",
+        "pos": [
+          1.332,
+          0.208
+        ]
+      },
+      {
+        "id": 14,
+        "label": "N14 - Persimpangan Jl. Putri Tunggal x Jl. Mawar",
+        "pos": [
+          1.348,
+          0.154
+        ]
+      },
+      {
+        "id": 15,
+        "label": "N15 - Jl. Putri Tunggal",
+        "pos": [
+          1.351,
+          0.0
+        ]
+      },
+      {
+        "id": 16,
+        "label": "N16 - Jl. Putri Tunggal - Jl Putri Tunggal - Jl Putri Tunggal",
+        "pos": [
+          1.555,
+          0.913
+        ]
+      },
+      {
+        "id": 17,
+        "label": "N17 - Jl Buperta (Kawasan Taman Wiladatika)",
+        "pos": [
+          2.294,
+          0.911
+        ]
+      },
+      {
+        "id": 18,
+        "label": "N18 - Jl Transyogi",
+        "pos": [
+          2.375,
+          0.511
+        ]
+      },
+      {
+        "id": 19,
+        "label": "N19 - Jl Transyogi",
+        "pos": [
+          2.485,
+          0.399
+        ]
+      },
+      {
+        "id": 20,
+        "label": "N20 - Jl. Alternatif Cibubur",
+        "pos": [
+          2.388,
+          0.418
+        ]
+      },
+      {
+        "id": 21,
+        "label": "N21 - Persimpangan Jl. Ramitor - Jl. Telkom",
+        "pos": [
+          1.182,
+          0.41
+        ]
+      },
+      {
+        "id": 22,
+        "label": "T - Super Sink (gabungan semua titik keluar)",
+        "pos": [
+          2.783,
+          0.911
+        ]
+      }
+    ],
+    "edges": [
+      {
+        "from": 0,
+        "to": 1,
+        "weight": 0.001,
+        "capacity": 47213.0
+      },
+      {
+        "from": 1,
+        "to": 2,
+        "weight": 0.37,
+        "capacity": 665.8
+      },
+      {
+        "from": 2,
+        "to": 1,
+        "weight": 0.37,
+        "capacity": 665.8
+      },
+      {
+        "from": 2,
+        "to": 3,
+        "weight": 0.045,
+        "capacity": 1118.9
+      },
+      {
+        "from": 3,
+        "to": 2,
+        "weight": 0.045,
+        "capacity": 1118.9
+      },
+      {
+        "from": 3,
+        "to": 4,
+        "weight": 0.155,
+        "capacity": 665.8
+      },
+      {
+        "from": 4,
+        "to": 3,
+        "weight": 0.155,
+        "capacity": 665.8
+      },
+      {
+        "from": 4,
+        "to": 5,
+        "weight": 0.009,
+        "capacity": 1297.6
+      },
+      {
+        "from": 5,
+        "to": 4,
+        "weight": 0.009,
+        "capacity": 1297.6
+      },
+      {
+        "from": 5,
+        "to": 6,
+        "weight": 0.154,
+        "capacity": 1012.3
+      },
+      {
+        "from": 6,
+        "to": 5,
+        "weight": 0.154,
+        "capacity": 1012.3
+      },
+      {
+        "from": 6,
+        "to": 7,
+        "weight": 0.187,
+        "capacity": 1138.1
+      },
+      {
+        "from": 7,
+        "to": 6,
+        "weight": 0.187,
+        "capacity": 1138.1
+      },
+      {
+        "from": 7,
+        "to": 8,
+        "weight": 0.213,
+        "capacity": 747.0
+      },
+      {
+        "from": 8,
+        "to": 7,
+        "weight": 0.213,
+        "capacity": 747.0
+      },
+      {
+        "from": 8,
+        "to": 9,
+        "weight": 0.235,
+        "capacity": 1177.9
+      },
+      {
+        "from": 9,
+        "to": 8,
+        "weight": 0.235,
+        "capacity": 1177.9
+      },
+      {
+        "from": 9,
+        "to": 10,
+        "weight": 0.226,
+        "capacity": 1212.8
+      },
+      {
+        "from": 9,
+        "to": 21,
+        "weight": 0.315,
+        "capacity": 698.3
+      },
+      {
+        "from": 10,
+        "to": 9,
+        "weight": 0.226,
+        "capacity": 1212.8
+      },
+      {
+        "from": 10,
+        "to": 11,
+        "weight": 0.023,
+        "capacity": 1313.5
+      },
+      {
+        "from": 10,
+        "to": 16,
+        "weight": 0.211,
+        "capacity": 368.8
+      },
+      {
+        "from": 11,
+        "to": 10,
+        "weight": 0.023,
+        "capacity": 1313.5
+      },
+      {
+        "from": 11,
+        "to": 12,
+        "weight": 0.313,
+        "capacity": 996.0
+      },
+      {
+        "from": 12,
+        "to": 11,
+        "weight": 0.313,
+        "capacity": 996.0
+      },
+      {
+        "from": 12,
+        "to": 13,
+        "weight": 0.2,
+        "capacity": 864.5
+      },
+      {
+        "from": 12,
+        "to": 21,
+        "weight": 0.197,
+        "capacity": 1130.3
+      },
+      {
+        "from": 13,
+        "to": 12,
+        "weight": 0.2,
+        "capacity": 864.5
+      },
+      {
+        "from": 13,
+        "to": 14,
+        "weight": 0.057,
+        "capacity": 1094.9
+      },
+      {
+        "from": 14,
+        "to": 13,
+        "weight": 0.057,
+        "capacity": 1094.9
+      },
+      {
+        "from": 14,
+        "to": 15,
+        "weight": 0.155,
+        "capacity": 1127.8
+      },
+      {
+        "from": 15,
+        "to": 14,
+        "weight": 0.155,
+        "capacity": 1127.8
+      },
+      {
+        "from": 16,
+        "to": 10,
+        "weight": 0.211,
+        "capacity": 368.8
+      },
+      {
+        "from": 16,
+        "to": 17,
+        "weight": 0.737,
+        "capacity": 831.2
+      },
+      {
+        "from": 17,
+        "to": 16,
+        "weight": 0.737,
+        "capacity": 831.2
+      },
+      {
+        "from": 17,
+        "to": 18,
+        "weight": 0.411,
+        "capacity": 4971.8
+      },
+      {
+        "from": 17,
+        "to": 22,
+        "weight": 0.001,
+        "capacity": 47213.0
+      },
+      {
+        "from": 18,
+        "to": 19,
+        "weight": 0.157,
+        "capacity": 3073.9
+      },
+      {
+        "from": 18,
+        "to": 20,
+        "weight": 0.094,
+        "capacity": 3136.3
+      },
+      {
+        "from": 21,
+        "to": 9,
+        "weight": 0.315,
+        "capacity": 698.3
+      },
+      {
+        "from": 21,
+        "to": 12,
+        "weight": 0.197,
+        "capacity": 1130.3
+      }
+    ]
+  },
+  "raw_quantitative_trace": [
+    {
+      "step": 1,
+      "event_type": "INITIALIZATION",
+      "mutations": {
+        "algorithm": "FordFulkerson",
+        "source": 0,
+        "sink": 22,
+        "max_flow": 0.0
+      }
+    },
+    {
+      "step": 2,
+      "event_type": "AUGMENTING_PATH_FOUND",
+      "mutations": {
+        "path": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          16,
+          17,
+          22
+        ],
+        "flow_added": 665.8,
+        "current_max_flow": 665.8
+      }
+    },
+    {
+      "step": 3,
+      "event_type": "MAX_FLOW_FOUND",
+      "mutations": {
+        "max_flow": 665.8,
+        "min_cut_edges": [
+          [
+            1,
+            2
+          ]
+        ],
+        "min_cut_capacity": 665.8
+      }
+    },
+    {
+      "step": 4,
+      "event_type": "UPDATE_CAPACITY_EVENT",
+      "mutations": {
+        "target_edge": [
+          10,
+          16
+        ],
+        "old_capacity": 922.0,
+        "new_capacity": 0.0,
+        "strategy": "FULL_RECOMPUTATION"
+      }
+    },
+    {
+      "step": 5,
+      "event_type": "INITIALIZATION",
+      "mutations": {
+        "algorithm": "FordFulkerson",
+        "source": 0,
+        "sink": 22,
+        "max_flow": 0.0
+      }
+    },
+    {
+      "step": 6,
+      "event_type": "MAX_FLOW_FOUND",
+      "mutations": {
+        "max_flow": 0.0,
+        "min_cut_edges": [
+          [
+            10,
+            16
+          ]
+        ],
+        "min_cut_capacity": 0.0
+      }
+    },
+    {
+      "step": 7,
+      "event_type": "UPDATE_CAPACITY_EVENT",
+      "mutations": {
+        "target_edge": [
+          16,
+          10
+        ],
+        "old_capacity": 922.0,
+        "new_capacity": 0.0,
+        "strategy": "FULL_RECOMPUTATION"
+      }
+    },
+    {
+      "step": 8,
+      "event_type": "INITIALIZATION",
+      "mutations": {
+        "algorithm": "FordFulkerson",
+        "source": 0,
+        "sink": 22,
+        "max_flow": 0.0
+      }
+    },
+    {
+      "step": 9,
+      "event_type": "MAX_FLOW_FOUND",
+      "mutations": {
+        "max_flow": 0.0,
+        "min_cut_edges": [
+          [
+            10,
+            16
+          ]
+        ],
+        "min_cut_capacity": 0.0
+      }
+    },
+    {
+      "step": 10,
+      "event_type": "UPDATE_CAPACITY_EVENT",
+      "mutations": {
+        "target_edge": [
+          10,
+          16
+        ],
+        "old_capacity": 0.0,
+        "new_capacity": 368.8,
+        "strategy": "FULL_RECOMPUTATION"
+      }
+    },
+    {
+      "step": 11,
+      "event_type": "INITIALIZATION",
+      "mutations": {
+        "algorithm": "FordFulkerson",
+        "source": 0,
+        "sink": 22,
+        "max_flow": 0.0
+      }
+    },
+    {
+      "step": 12,
+      "event_type": "AUGMENTING_PATH_FOUND",
+      "mutations": {
+        "path": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          16,
+          17,
+          22
+        ],
+        "flow_added": 368.8,
+        "current_max_flow": 368.8
+      }
+    },
+    {
+      "step": 13,
+      "event_type": "MAX_FLOW_FOUND",
+      "mutations": {
+        "max_flow": 368.8,
+        "min_cut_edges": [
+          [
+            10,
+            16
+          ]
+        ],
+        "min_cut_capacity": 368.8
+      }
+    },
+    {
+      "step": 14,
+      "event_type": "UPDATE_CAPACITY_EVENT",
+      "mutations": {
+        "target_edge": [
+          16,
+          10
+        ],
+        "old_capacity": 0.0,
+        "new_capacity": 368.8,
+        "strategy": "FULL_RECOMPUTATION"
+      }
+    },
+    {
+      "step": 15,
+      "event_type": "INITIALIZATION",
+      "mutations": {
+        "algorithm": "FordFulkerson",
+        "source": 0,
+        "sink": 22,
+        "max_flow": 0.0
+      }
+    },
+    {
+      "step": 16,
+      "event_type": "AUGMENTING_PATH_FOUND",
+      "mutations": {
+        "path": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          16,
+          17,
+          22
+        ],
+        "flow_added": 368.8,
+        "current_max_flow": 368.8
+      }
+    },
+    {
+      "step": 17,
+      "event_type": "MAX_FLOW_FOUND",
+      "mutations": {
+        "max_flow": 368.8,
+        "min_cut_edges": [
+          [
+            10,
+            16
+          ]
+        ],
+        "min_cut_capacity": 368.8
+      }
+    }
+  ]
+}
