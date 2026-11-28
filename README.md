@@ -1,4 +1,99 @@
-# Starter Kit Matematika Diskrit Lanjut: Baseline Architecture & Semantic Logging
+# Truk Mogok: Analisis Maximum Flow dan Bottleneck di Jl. Radar Auri, Depok
+
+Tugas Besar ETS Matematika Diskrit Lanjut 2026, Kelas 2A D4.
+
+## Identitas Kelompok
+
+| NIM | Nama | Peran |
+|-----|------|-------|
+| ...003 | <NAMA LENGKAP> | Anggota 1: Isu, Fishbone, dokumentasi |
+| ...013 | <NAMA LENGKAP> | Anggota 2: Pemodelan graf dan skenario YAML |
+| ...018 | <NAMA LENGKAP> | Anggota 3: Pipeline dan algoritma |
+| ...026 | <NAMA LENGKAP> | Anggota 4: Benchmark dan analisis |
+
+## Isu yang Dikaji
+
+Pada Senin, 17 Maret 2025 sekitar pukul 13.30 WIB, sebuah truk kontainer mogok karena tidak kuat menanjak di pertigaan Jl. Radar Auri, Cimanggis, Depok. Lalu lintas baru lancar sekitar pukul 15.00 WIB (±90 menit), dan kemacetan mengekor hingga Jl. Putri Tunggal dan Taman Wiladatika.
+
+Sumber: [detikNews, 18 Maret 2025](https://news.detik.com/berita/d-7828306/truk-kontainer-mogok-di-jalan-sempit-berujung-horor-macet-di-depok)
+
+## Pendekatan
+
+- Jaringan jalan dimodelkan sebagai graph berarah berbobot (persimpangan = simpul, ruas jalan = sisi, kapasitas = bobot).
+- Kapasitas ruas dihitung dengan rumus PKJI: `C = C0 x FCLJ x FCPA x FCHS x FCUK`.
+- Algoritma Basic: Ford-Fulkerson varian Edmonds-Karp (BFS), O(VE^2).
+- Algoritma Advance: Dinic dengan Incremental Residual Repair, O(V^2E).
+- Skenario dinamis: kondisi normal, truk mogok (kapasitas 0), lalu satu lajur dibuka petugas.
+
+## Struktur Repositori
+
+| Folder/File | Isi |
+|---|---|
+| `core/` | Model graf, runner simulasi, observer, visualizer |
+| `algorithms/maxflow/` | `ford_fulkerson.py` dan `dinic.py` |
+| `cases/scenarios/` | File skenario YAML, termasuk `case_07_truk_mogok_radar_auri.yaml` |
+| `scripts/` | `run_simulation.py` dan `run_benchmark.py` |
+| `tests/` | Unit test dan stress test |
+| `output/` | Hasil JSON trace dan plot PNG |
+| `docs/` | Dokumen Word, fishbone, slide, bukti di `docs/assets/` |
+
+## Tutorial Penggunaan Aplikasi
+
+### 1. Persiapan
+
+Butuh Python (lihat `.python-version`). Dari folder root repo:
+
+```bash
+git clone https://github.com/kylakhansatif17/truk-mogok.git
+cd truk-mogok
+pip install -r requirements.txt
+```
+
+### 2. Jalankan test
+
+```bash
+python -m pytest -v
+```
+
+Semua test harus lulus sebelum menjalankan simulasi.
+
+### 3. Jalankan simulasi
+
+```bash
+python -m scripts.run_simulation cases/scenarios/case_07_truk_mogok_radar_auri.yaml -a ford_fulkerson --save-plots --no-show
+python -m scripts.run_simulation cases/scenarios/case_07_truk_mogok_radar_auri.yaml -a dinic --save-plots --no-show
+```
+
+Program mencetak Max Flow dan Min-Cut. Hasilnya disimpan di `output/`:
+- `output_<case_id>_<algo>.json` berisi trace per langkah.
+- File PNG berisi plot graf dengan label `flow/capacity`, garis oranye putus-putus untuk Min-Cut, dan garis merah tebal untuk ruas yang terganggu.
+
+Hapus `--no-show` bila ingin jendela plot ditampilkan.
+
+### 4. Bandingkan algoritma
+
+```bash
+python -m scripts.run_benchmark cases/scenarios/case_07_truk_mogok_radar_auri.yaml --compare ford_fulkerson dinic
+```
+
+Tabel hasil memuat Steps, InitVal, PostVal, Runtime (ms), dan Min-Cut untuk kedua algoritma.
+
+### 5. Membuat skenario sendiri
+
+Salin file YAML yang ada, lalu ubah `nodes`, `edges` (setiap ruas punya `weight` dan `capacity`), dan `events` bertipe `DYNAMIC_EDGE_CAPACITY`. Jalankan ulang perintah pada langkah 3.
+
+## Tautan
+
+- Video YouTube: <LINK YOUTUBE>
+- Repositori: https://github.com/kylakhansatif17/truk-mogok
+
+---
+
+# Dokumentasi Starter Kit (Template Dosen)
+
+> Bagian di bawah ini adalah dokumentasi asli starter kit dari dosen (`trisgelar/matdis-tubes-2026`) dan dipertahankan utuh sebagai panduan arsitektur, struktur direktori, dan cara memakai scripts/tests.
+
+## Starter Kit Matematika Diskrit Lanjut: Baseline Architecture & Semantic Logging
 
 Proyek ini adalah *starter kit* pembelajaran dan eksperimen algoritma graf berbasis **SOLID Principles**, **Data-Driven Testing (YAML)**, dan **Quantitative-First Semantic Logging**.
 
