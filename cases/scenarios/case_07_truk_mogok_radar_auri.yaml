@@ -3,12 +3,12 @@
 # Parameter: penduduk Kota Depok = 2.167961 juta jiwa; faktor 1 lajur dibuka = 0.4
 case_id: case_07_truk_mogok_radar_auri
 title: Analisis Maximum Flow Kemacetan Truk Kontainer Mogok Jl. Radar Auri Depok
-description: Pemodelan jaringan jalan nyata (V=23, E=44) koridor Jl. Radar Auri - Jl. Putri Tunggal - Taman Wiladatika. Kapasitas
+description: Pemodelan jaringan jalan nyata (V=23, E=41) koridor Jl. Radar Auri - Jl. Putri Tunggal - Taman Wiladatika. Kapasitas
   ruas dihitung dengan PKJI 2014 (C = C0 x FCLJ x FCPA x FCHS x FCUK, satuan skr/jam).
 nodes:
 - id: 0
   label: S - Super Source (gabungan semua titik masuk)
-  pos: [-0.298, 0.751]
+  pos: [-0.298, 0.591]
 - id: 1
   label: N01 - Persimpangan Jl. Radar Auri – Jl. Komp. Sendang Agung
   pos: [0.0, 0.591]
@@ -58,7 +58,7 @@ nodes:
   label: N16 - Jl. Putri Tunggal - Jl Putri Tunggal - Jl Putri Tunggal
   pos: [1.555, 0.913]
 - id: 17
-  label: N17 - Jl Buperta
+  label: N17 - Jl Buperta (Kawasan Taman Wiladatika)
   pos: [2.294, 0.911]
 - id: 18
   label: N18 - Jl Transyogi
@@ -74,7 +74,7 @@ nodes:
   pos: [1.182, 0.41]
 - id: 22
   label: T - Super Sink (gabungan semua titik keluar)
-  pos: [2.783, 0.272]
+  pos: [2.783, 0.911]
 edges:
 - {from: 0, to: 1, weight: 0.001, capacity: 47213.0}
 - {from: 1, to: 2, weight: 0.37, capacity: 665.8}
@@ -116,10 +116,7 @@ edges:
 - {from: 17, to: 18, weight: 0.411, capacity: 4971.8}
 - {from: 18, to: 19, weight: 0.157, capacity: 3073.9}
 - {from: 18, to: 20, weight: 0.094, capacity: 3136.3}
-- {from: 15, to: 22, weight: 0.001, capacity: 47213.0}
-- {from: 0, to: 17, weight: 0.001, capacity: 47213.0}
-- {from: 19, to: 22, weight: 0.001, capacity: 47213.0}
-- {from: 20, to: 22, weight: 0.001, capacity: 47213.0}
+- {from: 17, to: 22, weight: 0.001, capacity: 47213.0}
 execution_plan:
   start_node: 0
   goal_node: 22
@@ -127,25 +124,25 @@ execution_plan:
   events:
   - step: 1
     type: DYNAMIC_EDGE_CAPACITY
-    target_edge: [10, 11]
+    target_edge: [10, 16]
     new_capacity: 0.0
     description: 'Truk kontainer mogok tidak kuat menanjak di pertigaan Jl. Radar Auri: ruas Pertigaan Jl. Radar Auri x Jl.
-      Putri Tunggal -> Jl. Putri Tunggal tertutup total (kapasitas turun ke 0 skr/jam).'
+      Putri Tunggal -> Jl. Putri Tunggal - Jl Putri Tunggal - Jl Putri Tunggal tertutup total (kapasitas turun ke 0 skr/jam).'
   - step: 1
     type: DYNAMIC_EDGE_CAPACITY
-    target_edge: [11, 10]
+    target_edge: [16, 10]
     new_capacity: 0.0
-    description: 'Truk kontainer mogok tidak kuat menanjak di pertigaan Jl. Radar Auri: ruas Jl. Putri Tunggal -> Pertigaan
-      Jl. Radar Auri x Jl. Putri Tunggal tertutup total (kapasitas turun ke 0 skr/jam).'
+    description: 'Truk kontainer mogok tidak kuat menanjak di pertigaan Jl. Radar Auri: ruas Jl. Putri Tunggal - Jl Putri
+      Tunggal - Jl Putri Tunggal -> Pertigaan Jl. Radar Auri x Jl. Putri Tunggal tertutup total (kapasitas turun ke 0 skr/jam).'
   - step: 2
     type: DYNAMIC_EDGE_CAPACITY
-    target_edge: [10, 11]
-    new_capacity: 525.4
-    description: 'Petugas membuka 1 lajur: ruas Pertigaan Jl. Radar Auri x Jl. Putri Tunggal -> Jl. Putri Tunggal naik dari
-      0 menjadi 525.4 skr/jam (40% dari kapasitas normal 1313.5).'
+    target_edge: [10, 16]
+    new_capacity: 368.8
+    description: 'Petugas membuka 1 lajur: ruas Pertigaan Jl. Radar Auri x Jl. Putri Tunggal -> Jl. Putri Tunggal - Jl Putri
+      Tunggal - Jl Putri Tunggal naik dari 0 menjadi 368.8 skr/jam (40% dari kapasitas normal 922.0).'
   - step: 2
     type: DYNAMIC_EDGE_CAPACITY
-    target_edge: [11, 10]
-    new_capacity: 525.4
-    description: 'Petugas membuka 1 lajur: ruas Jl. Putri Tunggal -> Pertigaan Jl. Radar Auri x Jl. Putri Tunggal naik dari
-      0 menjadi 525.4 skr/jam (40% dari kapasitas normal 1313.5).'
+    target_edge: [16, 10]
+    new_capacity: 368.8
+    description: 'Petugas membuka 1 lajur: ruas Jl. Putri Tunggal - Jl Putri Tunggal - Jl Putri Tunggal -> Pertigaan Jl. Radar
+      Auri x Jl. Putri Tunggal naik dari 0 menjadi 368.8 skr/jam (40% dari kapasitas normal 922.0).'

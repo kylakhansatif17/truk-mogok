@@ -1,6 +1,6 @@
 kode,nama,jenis,lat,lng,bukti,catatan
 S,Super Source (gabungan semua titik masuk),super_source,,,,simpul virtual (Ford & Fulkerson 1956 catatan kaki 1)
-N01,Persimpangan Jl. Radar Auri – Jl. Komp. Sendang Agung,masuk,-6.37084363,106.874882652,N01_streetview.jpeg,
+N01,Persimpangan Jl. Radar Auri – Jl. Komp. Sendang Agung,masuk,-6.37084363,106.874882652,N01_streetview.jpeg,source sesuai WORKFLOW_TIM (Jl. Radar Auri)
 N02,Persimpangan Jl. Radar Auri – Jl. Bakti,persimpangan,-6.37192693,106.878051137,N02_streetview.jpeg,
 N03,Persimpangan Jl.Radar Auri - Jl. Swadaya,persimpangan,-6.372080196,106.878429702,N03_streetview.jpeg,
 N04,Persimpangan Jl.Radar Auri - Jl.H.Sofyan,persimpangan,-6.372483194,106.879770384,N04_streetview.jpeg,
@@ -9,16 +9,16 @@ N06,Persimpangan Jl Radar Auri - Jl. H. Anang,persimpangan,-6.3718631,106.881100
 N07,Persimpangan Jl. Radar Auri - Jl. Swadaya3,persimpangan,-6.371153776,106.882632572,N07_streetview.jpeg,
 N08,Jl. Radar Auri - Jl. Mualim Aminudin,persimpangan,-6.369772542,106.883971385,N08_streetview.jpeg,
 N09,Persimpangan Jl. Radar Auri x Jl. Ramitor,persimpangan,-6.369701534,106.886097202,N09_streetview.jpeg,
-N10,Pertigaan Jl. Radar Auri x Jl. Putri Tunggal,persimpangan,-6.369662191,106.888140309,N10_streetview.jpeg,
+N10,Pertigaan Jl. Radar Auri x Jl. Putri Tunggal,persimpangan,-6.369662191,106.888140309,N10_streetview.jpeg,lokasi kejadian truk mogok
 N11,Jl. Putri Tunggal,persimpangan,-6.3698695,106.888160428,N11_streetview.jpeg,
 N12,Pertigaan Jl Putri Tunggal x Jl. Telkom x Jl. Pratidina,persimpangan,-6.372567295,106.887346761,N12_streetview.jpeg,
 N13,Persimpangan Jl. Putri Tunggal x Jl. Gatot Kaca,persimpangan,-6.374311903,106.88692423,N13_streetview.jpeg,
 N14,Persimpangan Jl. Putri Tunggal x Jl. Mawar,persimpangan,-6.374801639,106.887071085,N14_streetview.jpeg,
-N15,Jl. Putri Tunggal,keluar,-6.376192976,106.88709069,N15_streetview.jpeg,
+N15,Jl. Putri Tunggal,persimpangan,-6.376192976,106.88709069,N15_streetview.jpeg,
 N16,Jl. Putri Tunggal - Jl Putri Tunggal - Jl Putri Tunggal,persimpangan,-6.367938568,106.888942104,N16_streetview.jpeg,
-N17,Jl Buperta,masuk,-6.367949902,106.89561508,N17_streetview.jpeg,
+N17,Jl Buperta (Kawasan Taman Wiladatika),keluar,-6.367949902,106.89561508,N17_streetview.jpeg,sink sesuai WORKFLOW_TIM (Kawasan Taman Wiladatika)
 N18,Jl Transyogi,persimpangan,-6.371573348,106.896349387,N18_streetview.jpeg,
-N19,Jl Transyogi,keluar,-6.372586291,106.897341804,N19_streetview.jpeg,
-N20,Jl. Alternatif Cibubur,keluar,-6.372409207,106.896470184,N20_streetview.jpeg,
+N19,Jl Transyogi,persimpangan,-6.372586291,106.897341804,N19_streetview.jpeg,
+N20,Jl. Alternatif Cibubur,persimpangan,-6.372409207,106.896470184,N20_streetview.jpeg,
 N21,Persimpangan Jl. Ramitor - Jl. Telkom,persimpangan,-6.372484878,106.8855665,N21_streetview.jpeg,
 T,Super Sink (gabungan semua titik keluar),super_sink,,,,simpul virtual
